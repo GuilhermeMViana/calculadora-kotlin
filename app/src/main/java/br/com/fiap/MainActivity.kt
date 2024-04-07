@@ -33,12 +33,15 @@ class MainActivity : ComponentActivity() {
         val buttonDivide = findViewById<Button>(R.id.button_divide)
         val buttonEqual = findViewById<Button>(R.id.button_equal)
 
+        val buttonErase = findViewById<Button>(R.id.button_erase)
+
         // Configurar os listeners dos botões numéricos
         val numberClickListener = { view: android.view.View ->
             val digit = (view as Button).text
             val currentText = displayTextView.text.toString()
             displayTextView.text = if (currentText == "0") digit else "$currentText$digit"
         }
+
 
         button1.setOnClickListener(numberClickListener)
         button2.setOnClickListener(numberClickListener)
@@ -57,6 +60,7 @@ class MainActivity : ComponentActivity() {
             val currentText = displayTextView.text.toString()
             if (currentText.isNotEmpty()) {
                 // Implemente o código para lidar com os operadores aqui
+
             }
         }
 
@@ -69,6 +73,14 @@ class MainActivity : ComponentActivity() {
         buttonEqual.setOnClickListener {
             val expression = displayTextView.text.toString()
             // Implemente o código para calcular o resultado da expressão aqui
+        }
+
+        //Configurar o listenar do botão de excluir
+        buttonErase.setOnClickListener {
+           if (displayTextView.text.length <= 1){
+               displayTextView.text = displayTextView.text.toString().dropLast(1)
+           }
+
         }
     }
 }
