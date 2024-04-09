@@ -14,6 +14,8 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.activity_main)
 
         displayTextView = findViewById(R.id.textViewDisplay)
+        var operator: String = ""
+        var firstExpression: String = ""
 
         // Definir os listeners dos botões
         val button1 = findViewById<Button>(R.id.button_1)
@@ -34,6 +36,7 @@ class MainActivity : ComponentActivity() {
         val buttonEqual = findViewById<Button>(R.id.button_equal)
 
         val buttonErase = findViewById<Button>(R.id.button_erase)
+        val buttonClear = findViewById<Button>(R.id.button_clear)
 
         // Configurar os listeners dos botões numéricos
         val numberClickListener = { view: android.view.View ->
@@ -56,10 +59,10 @@ class MainActivity : ComponentActivity() {
 
         // Configurar os listeners dos operadores
         val operatorClickListener = { view: android.view.View ->
-            val operator = (view as Button).text
-            val currentText = displayTextView.text.toString()
-            if (currentText.isNotEmpty()) {
-                // Implemente o código para lidar com os operadores aqui
+            if (displayTextView.text.toString().isNotEmpty() && firstExpression == "") {
+                operator = (view as Button).text.toString()
+                firstExpression = displayTextView.text.toString()
+                displayTextView.text = "0"
 
             }
         }
@@ -71,16 +74,35 @@ class MainActivity : ComponentActivity() {
 
         // Configurar o listener para o botão de igual
         buttonEqual.setOnClickListener {
-            val expression = displayTextView.text.toString()
-            // Implemente o código para calcular o resultado da expressão aqui
+            if (firstExpression != "") {
+                val expression = displayTextView.text.toString()
+                val result = when (operator) {
+                    "+" -> firstExpression.toDouble() + expression.toDouble()
+                    "-" -> firstExpression.toDouble() - expression.toDouble()
+                    "*" -> firstExpression.toDouble() * expression.toDouble()
+                    "/" -> firstExpression.toDouble() / expression.toDouble()
+                    else -> 0
+                }
+                displayTextView.text = result.toString();
+
+                firstExpression = ""
+
+            }
+
         }
 
         //Configurar o listenar do botão de excluir
         buttonErase.setOnClickListener {
-           if (displayTextView.text.length <= 1){
+           if (displayTextView.text.length >= 1){
                displayTextView.text = displayTextView.text.toString().dropLast(1)
            }
 
+        }
+
+        buttonClear.setOnClickListener {
+            displayTextView.text = "0"
+            firstExpression = ""
+            operator = ""
         }
     }
 }
