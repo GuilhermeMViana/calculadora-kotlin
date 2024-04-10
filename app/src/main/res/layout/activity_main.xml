@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- O layout raiz é um ConstraintLayout, que permite posicionar e dimensionar widgets de maneira flexível. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Este é um TextView que é usado para exibir os valores da calculadora. Ele está posicionado no topo do layout. -->
     <TextView
         android:id="@+id/textViewDisplay"
         android:layout_width="match_parent"
@@ -14,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:padding="16dp"/>
 
+    <!-- Este é um GridLayout que contém os botões da calculadora. Ele está posicionado abaixo do TextView. -->
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewDisplay"
         tools:visibility="visible">
 
-        <!-- Botões numéricos -->
+        <!-- Aqui estão os botões numéricos. Cada botão tem um id único e o texto é o número que o botão representa. -->
         <Button
             android:id="@+id/button_1"
             android:layout_row="1"
@@ -90,9 +93,7 @@
             android:layout_column="0"
             android:text="0" />
 
-
-        <!-- Botões de operadores -->
-
+        <!-- Aqui estão os botões de operadores. Cada botão tem um id único e o texto é o operador que o botão representa. -->
         <Button
             android:id="@+id/button_subtract"
             android:layout_row="3"
@@ -118,7 +119,7 @@
             android:layout_column="3"
             android:text="+" />
 
-        <!-- Botão de igual -->
+        <!-- Este é o botão de igual. Quando pressionado, ele avalia a expressão atual e exibe o resultado. -->
         <Button
             android:id="@+id/button_equal"
             android:layout_width="wrap_content"
@@ -126,19 +127,19 @@
             android:layout_column="1"
             android:text="=" />
 
-        <!-- Botão de apagar -->
+        <!-- Este é o botão de apagar. Quando pressionado, ele remove o último dígito do display. -->
         <Button
             android:id="@+id/button_erase"
             android:layout_row="1"
             android:layout_column="3"
             android:text="c" />
 
+        <!-- Este é o botão de limpar. Quando pressionado, ele limpa o display e redefine as variáveis. -->
         <Button
             android:id="@+id/button_clear"
             android:layout_row="0"
             android:layout_column="3"
             android:text="ce" />
-
 
     </GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
