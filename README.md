@@ -1,4 +1,5 @@
 # Calculadora para operações simples em Kotlin
-![image](https://github.com/GuilhermeMViana/calculadora-kotlin/assets/125066078/60d97baa-f415-4283-b28d-b94b483db3a8)
 
+![calculadora](https://github.com/GuilhermeMViana/calculadora-kotlin/assets/125066078/fcf00e2b-ce4b-40c5-b215-7332df043c65)
 
+É possivel realizar as quatro operações basicas com a calculadora e utilizar o resultado da operação anterior para a proxima.
